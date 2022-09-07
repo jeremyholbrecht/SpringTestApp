@@ -40,4 +40,20 @@ public class PokemonServiceImpl implements PokemonService {
     public void createPokemon(Pokemon pokemon) {
         pokemons.add(pokemon);
     }
+
+    @Override
+    public void updatePokemon(Pokemon pokemon, int id) {
+        for (int i = 0; i < pokemons.size(); i++){
+            Pokemon p = pokemons.get(i);
+            if (p.getId()==(id)){
+                pokemons.set(i, pokemon);
+                return;
+            }
+        }
+    }
+
+    @Override
+    public void deletePokemon(int id) {
+        pokemons.removeIf(p -> p.getId() == id);
+    }
 }
